@@ -10,6 +10,24 @@
     <link rel="stylesheet" href="full_style.css" />
     <link rel="stylesheet" href="media.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
+    
+    <script>
+    if (typeof window.history.pushState === 'function') {
+        var removeExtension = function () {
+            var path = window.location.pathname;
+            if (path.slice(-5) === '.html') {
+                window.history.replaceState({}, '', path.slice(0, -5));
+            }
+        };
+
+        removeExtension();
+
+        window.addEventListener('popstate', function () {
+            removeExtension();
+        });
+    }
+</script>
+
 
 </head>
 
